@@ -136,18 +136,32 @@
       }
             
       /*
-       * Check for a winner
+       * Check for a winner, needs testing
        */
       function checkWin(){
+      	var win = false;
           // initial tile values
           var start = [ 
            [1, 2, 3, 4], 
            [5, 6, 7, 8], 
            [9, 10, 11, 12], 
            [13, 14, 15, 0] ];
-
-          if(tileValues == start)
-              alert("You Win!");
+	
+	 check:
+          for(var i=0; i<SIZE; i++){
+          	for (var x=0; x<SIZE; x++){
+          		if (tileValues[i][x] != start[i][x]){
+          			win = false;
+          			break check;
+          		}	
+          		else
+          			win = true;
+          	}
+          }
+          if (win == true){
+          	alert("You win!!")
+          	randomize();
+          }
       }
 
       
